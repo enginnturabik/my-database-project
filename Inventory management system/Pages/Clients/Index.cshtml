@@ -1,0 +1,77 @@
+﻿@page
+@model Inventory_management_system.Pages.Clients.IndexModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+
+
+
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <i class="fas fa-warehouse"> &#160 </i>  <h3>Inventory Management System</h3>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col d-flex justify-content-start">
+                <div>
+                    <h3><i class="fa fa-address-card"></i> List of Clients: </h3>
+                </div>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <div>
+                    <a class='btn btn-success btn-sm' href='/Clients/Create'>INSERT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <table class="table table-bordered border-primary">
+            <thead class="table-dark">
+                <tr>
+                    <th>CUSTOMER ID</th>
+                    <th>NAME</th>
+                    <th>LAST NAME</th>
+                    <th>ITEM</th>
+                    <th>ADDRESS</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listClient)
+                {
+                    <tr>
+
+                        <td>@item.id</td>
+                        <td>@item.name</td>
+                        <td>@item.lastname</td>
+                        <td>@item.item</td>
+                        <td>@item.address</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="/Clients/Edit?id=@item.id">Update</a>
+                            <a class="btn btn-danger btn-sm" href="/Clients/Delete?id=@item.id">Delete</a>
+                        </td>                  
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+</html>
